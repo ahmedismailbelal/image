@@ -44,10 +44,11 @@ def load_data(path):
         yLabel.append(na)
 
     return Xdata,yLabel
-
+from rest_framework.parsers import MultiPartParser
 import pandas as pd
 class predict_image(APIView):
     permission_classes = [AllowAny]
+    parser_classes = [MultiPartParser]
     def post(self,request):
         if request.method == 'POST':
             image_data = request.FILES.get('image')
